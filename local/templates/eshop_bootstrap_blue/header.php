@@ -172,23 +172,21 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
         <div id="modal-form" style="display:none;">
             <!--Подключаем компонент-->
             <?$APPLICATION->IncludeComponent(
-            "my_components:my.feedback", 
-            "feedback_ajax", 
-            array(
-                "EMAIL_TO" => "maximv201@mail.ru",
-                "EVENT_MESSAGE_ID" => "7",
-                "IBLOCK_ID" => "5",
-                "IBLOCK_TYPE" => "feedback",
-                "REQUIRED_FIELDS" => array(
-                    0 => "NAME",
-                    1 => "PHONE",
-                    2 => "EMAIL",
-                    3 => "MESSAGE",
-                ),
-                "USE_CONSENT" => "Y",
-                "COMPONENT_TEMPLATE" => "feedback_ajax"
-                ),
-                false);?>
+	"my_components:my.feedback", 
+	"feedback_ajax", 
+	array(
+		"EMAIL_TO" => "maximv201@mail.ru",
+		"EVENT_MESSAGE_ID" => "7",
+		"IBLOCK_ID" => "5",
+		"IBLOCK_TYPE" => "feedback",
+		"REQUIRED_FIELDS" => array(
+			0 => "NONE",
+		),
+		"USE_CONSENT" => "Y",
+		"COMPONENT_TEMPLATE" => "feedback_ajax"
+	),
+	false
+);?>
         </div>
     </header>
 
