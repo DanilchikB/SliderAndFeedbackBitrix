@@ -1,29 +1,14 @@
 <?php
-if($_SERVER['REQUEST_METHOD']=='GET'){
-    if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
+if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
 
-    /**
-     * Bitrix vars
-     *
-     * @var array $arParams
-     * @var array $arResult
-     * @var CBitrixComponent $this
-     * @global CMain $APPLICATION
-     * @global CUser $USER
-     */
+if(isPost()){
     //Подготавливаем переменные
     $arParams["EMAIL_TO"] = trim($arParams["EMAIL_TO"]);
     if($arParams["EMAIL_TO"] == '')
         $arParams["EMAIL_TO"] = COption::GetOptionString("main", "email_from");//
     if($arParams["EVENT_NAME"] == '')
         $arParams["EVENT_NAME"] = "FEEDBACK_FORM";
-
-    $this->IncludeComponentTemplate();
-}
-
-if($_SERVER['REQUEST_METHOD']=='POST'){
-    require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-    
+    //Обработка POST-данных
     $formFields = ['user_name','user_phone', 'user_email', 'message'];
     $arResult ['FORM'] = [ ];
     foreach ($formFields as $key ) {
@@ -33,8 +18,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     CModule::IncludeModule('iblock');
     
     $el = new CIBlockElement;
-    $iblock_type = $_POST["iblock_type"];
-    $iblock_id = $_POST["iblock_id"];
+    $iblock_type = $arParams["IBLOCK_TYPE"];
+    $iblock_id = $arParams["IBLOCK_ID"];
     $PROP = array();
     $properties = CIBlockProperty::GetList(Array("sort"=>"asc", "id"=>"asc"), Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$iblock_id));
     $PROP['NAME']=$arResult ['FORM']['user_name'];
@@ -57,12 +42,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             "AUTHOR" => $arResult ['FORM']['user_name'],
             "PHONE" => $arResult ['FORM']['user_phone'],
             "AUTHOR_EMAIL" => $arResult ['FORM']['user_email'],
-            "EMAIL_TO" => $_POST["email_to"],
+            "EMAIL_TO" => $arParams["EMAIL_TO"],
             "TEXT" => $arResult ['FORM']['message'],
             "VIEW_LINK" =>$viewLink ,
         );
         
-        if(CEvent::Send($_POST["event_name"], SITE_ID, $arFields))//отправка в почтовый шаблон
+        if(CEvent::Send($arParams["EVENT_NAME"], SITE_ID, $arFields))//отправка в почтовый шаблон
             echo "success";
     }
+}else{
+    $this->IncludeComponentTemplate();
 }

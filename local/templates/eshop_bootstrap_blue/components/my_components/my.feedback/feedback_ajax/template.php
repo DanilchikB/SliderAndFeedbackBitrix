@@ -87,11 +87,6 @@ $isRequired = function($field) use ($arParams) {
             <div id="no_consent" class="error-message" hidden="true"><?=GetMessage("NO_CONSENT")?></div>
     
     <?php endif;?>
-    
-    <input type="hidden" id="iblock_type" name="iblock_type" value="<?=$arParams["IBLOCK_TYPE"]?>">
-    <input type="hidden" id="iblock_id" name="iblock_id" value="<?=$arParams["IBLOCK_ID"]?>">
-    <input type="hidden" id="email_to" name="email_to" value="<?=$arParams["EMAIL_TO"]?>">
-    <input type="hidden" id="event_name" name="event_name" value="<?=$arParams["EVENT_NAME"]?>">
     <input type="submit" value="<?="Отправить"?>">
 </form>
 <div>

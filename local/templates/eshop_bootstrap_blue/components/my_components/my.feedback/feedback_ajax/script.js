@@ -45,15 +45,13 @@ $(document).ready(function(){
         }
         if(nofail){
             $.ajax({
-                url: "local/components/my_components/my.feedback/component.php", 
+                url: "ajax/callback.php", 
                 method: "POST",
                 cache: false,
                 data: form_data,
                 dataType: "html",
                 success: function (data){
-                    if(data == "success")
                         $("#success").show();
-                    else $("#error").show();
                 },
             });
         }    
