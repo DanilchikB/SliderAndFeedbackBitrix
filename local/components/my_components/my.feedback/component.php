@@ -1,6 +1,5 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
-
 if(isPost()){
     //Подготавливаем переменные
     $arParams["EMAIL_TO"] = trim($arParams["EMAIL_TO"]);

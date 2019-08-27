@@ -25,7 +25,6 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
     //Подключение fancybox
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/js/plugins/fancybox-master/dist/jquery.fancybox.min.css");
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH."/js/plugins/fancybox-master/dist/jquery.fancybox.min.js");
-
     
     ?>
 
@@ -62,9 +61,9 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
                             <?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/schedule.php"), false);?>
                         </div>
                     </div>
-                    <br/>
+                    
                     <!--Сама ссылка-->
-                    <a data-fancybox data-src="#modal-form" href="javascript:;">
+                    <a data-fancybox data-src="#modal-form" href="javascript:;" class="open-feedback-form">
                         Обратная связь
                     </a>
                 </div>
@@ -169,7 +168,7 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
             }
             ?>
         </div>
-        <div id="modal-form" style="display:none;">
+        <div id="modal-form" style="display:none; width:30%;">
             <!--Подключаем компонент-->
             <?$APPLICATION->IncludeComponent(
                 "my_components:my.feedback", 
@@ -182,6 +181,8 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
                     "REQUIRED_FIELDS" => array(
                         0 => "NAME",
                         1 => "PHONE",
+                        2 => "EMAIL",
+                        3 => "MESSAGE",
                     ),
                     "USE_CONSENT" => "Y",
                     "COMPONENT_TEMPLATE" => "feedback_ajax"

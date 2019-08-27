@@ -17,7 +17,7 @@ $isRequired = function($field) use ($arParams) {
 ?>
 
 <div class="mfeedback" >
-<form id="feedback_form">
+<form id="feedback_form" novalidate>
     <div class="mf-name">
         <div class="mf-text">
             <?=GetMessage("MFT_NAME")?>
@@ -54,7 +54,7 @@ $isRequired = function($field) use ($arParams) {
                 <span class="mf-req">*</span>
             <?php endif;?>
         </div>
-        <input type="text" id="user_email" name="user_email">
+        <input type="email" id="user_email" name="user_email">
     </div>
      <!--Сообщение об ошибке-->
     <?php if($isRequired('EMAIL')):?>
@@ -77,11 +77,11 @@ $isRequired = function($field) use ($arParams) {
     <?php endif;?>
     
     <?php if($arParams["USE_CONSENT"] == "Y"):?>
-        <div>
-            <div>
-            <input type="checkbox" id ="consent">
+        <div class="mf-consent">
+            <label>
+            <input type="checkbox" id ="consent" value>
             <?=GetMessage("MFT_CONSENT")?><span class="mf-req">*</span>
-            </div>
+            </label>
         </div>
         <!--Сообщение об ошибке-->
             <div id="no_consent" class="error-message" hidden="true"><?=GetMessage("NO_CONSENT")?></div>

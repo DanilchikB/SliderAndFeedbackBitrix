@@ -45,13 +45,15 @@ $(document).ready(function(){
         }
         if(nofail){
             $.ajax({
-                url: "ajax/callback.php", 
+                url: "/ajax/callback.php", 
                 method: "POST",
                 cache: false,
                 data: form_data,
                 dataType: "html",
                 success: function (data){
-                        $("#success").show();
+                        $("#feedback_form")[0].reset();
+                        $.fancybox.close();
+                        alert("Отправлено!");
                 },
             });
         }    

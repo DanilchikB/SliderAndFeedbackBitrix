@@ -256,7 +256,9 @@ img {
 }
 /* header / worktime */
 
-.bx-worktime {}
+.bx-worktime {
+    margin-bottom:10px;
+}
 
 @media (max-width: 767px) {
 	.bx-worktime {
@@ -814,4 +816,24 @@ a.bxd-block:hover {}
 }
 .bx-up-button:hover{
 	background-color: #9fa0a3;
+}
+
+a.open-feedback-form{
+    text-decoration: none; 
+    cursor: pointer;
+    text-align: center;
+    background: #70bb18;
+    border: 0;
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    line-height: 30px;
+    height: 50px;
+    padding: 5px 20px 5px 20px;
+    outline: 0;
+}
+a.open-feedback-form:hover{
+    color: #fff;
+    background: #81cd28;
 }

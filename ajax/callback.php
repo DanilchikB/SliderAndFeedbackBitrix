@@ -1,5 +1,4 @@
 <?php require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-
 $APPLICATION->IncludeComponent(
     "my_components:my.feedback", 
     "feedback_ajax", 
@@ -11,6 +10,8 @@ $APPLICATION->IncludeComponent(
         "REQUIRED_FIELDS" => array(
             0 => "NAME",
             1 => "PHONE",
+            2 => "EMAIL",
+            3 => "MESSAGE",
         ),
         "USE_CONSENT" => "Y",
         "COMPONENT_TEMPLATE" => "feedback_ajax"
